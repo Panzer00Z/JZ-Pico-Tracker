@@ -110,14 +110,14 @@ The board went from layout files to a fabricated PCB, through microscope inspect
 
 ### Results
 
-**What worked**
+**What went well**
 
 - Splitting the schematic into functional blocks made it straightforward to check the power tree and each interface independently.
 - Keeping the amplifier section physically apart from the DAC and SD card kept the switching noise out of the audio path.
 - Following the Raspberry Pi Pico datasheet for the power path meant the battery and the USB input could not back-feed each other, and the arrangement was already worked out and published rather than invented here.
 - The low-profile Choc key field kept the tracker close to the same footprint as the reference design while the whole instrument still came together as one unit.
 
-**What did not work**
+**What went wrong**
 
 - The MIDI interface needed extra attention, including the opto-isolator's output stage, and it took a second pass to get right.
 - Inspecting the fine-pitch parts by eye was not good enough; the microscope turned out to be essential for verifying joints on the dense side of the board.
