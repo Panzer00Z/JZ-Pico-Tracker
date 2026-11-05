@@ -21,19 +21,19 @@
 | **Focus** | Embedded audio and portable instrument |
 | **Started** | June 2023 |
 | **Status** | Complete - board fabricated, populated and tested |
-| **Core hardware** | Raspberry Pi Pico, PCM5102 DAC, MAX98306 amplifier, SD card, ILI9341 display, MIDI out, Li-ion charging |
+| **Core hardware** | Raspberry Pi Pico, PCM5102 DAC, MAX98306 amplifier, SD card, ILI9341 display, MIDI in and out, Li-ion charging |
 | **Design tools** | KiCad, reflow and hand soldering, microscope-assisted inspection, 3D printing |
 | **Scope** | Full schematic capture, PCB layout, BOM, fabrication, assembly and bring-up |
 
 ## Overview
 
-The picoTracker is a handheld music sampler built on the PicoTracker project, whose firmware is LittleGPTracker - also known as piggytracker. The reference hardware realises it as two boards sandwiched together. This project replaces that sandwich with a single custom PCB that carries the microcontroller, the full key field, the MIDI interface, the charging circuit and the power tree, and takes plug-in commercial modules for the parts that are already well characterised - the DAC, the amplifier, the storage and the display.
+The picoTracker is a handheld music sampler built on the PicoTracker project, whose firmware is LittleGPTracker - also known as piggytracker. The reference design this project follows realises it as two boards sandwiched together. This project replaces that sandwich with a single custom PCB that carries the microcontroller, the full key field, the MIDI interface, the charging circuit and the power tree, and takes plug-in commercial modules for the parts that are already well characterised - the DAC, the amplifier, the storage and the display.
 
-The board is built around a Raspberry Pi Pico, with a PCM5102 DAC breakout for I2S audio output and a MAX98306 class-D amplifier breakout driving two micro speakers. Storage is an Adafruit MicroSD breakout on SPI, and an ILI9341 SPI display plugs into a 14-pin header on the board. MIDI out is opto-isolated with an H11L1 optocoupler. A BQ24232 handles Li-ion charging from the USB-C port, and nine Kailh Choc switches are soldered straight to the board rather than fitted into sockets.
+The board is built around a Raspberry Pi Pico, with a PCM5102 DAC breakout for I2S audio output and a MAX98306 class-D amplifier breakout driving two micro speakers. Storage is an Adafruit MicroSD breakout on SPI, and an ILI9341 SPI display plugs into a 14-pin header on the board. Both MIDI directions are broken out to 3.5 mm jacks: the output is driven straight from a GPIO, and the input is opto-isolated with an H11L1 and a reverse-protection diode. A slide switch shuts the amplifier down for mute. A BQ24232 handles Li-ion charging from the USB-C port, and nine Kailh Choc switches are soldered straight to the board rather than fitted into sockets.
 
 The power tree follows the arrangement documented in the Raspberry Pi Pico datasheet: the USB-C input feeds a power-path charger, and a P-channel MOSFET gates the battery path so that the cell is disconnected from the system rail whenever USB power is present.
 
-**This board was designed against an older generation of the PicoTracker project and its hardware.** The upstream project has moved on since then - the fabrication warning that used to sit on the reference design has been resolved and the hardware has been revised - so this design should be read against the PicoTracker of its day rather than the current one.
+**This board was designed against an older generation of the PicoTracker project and its hardware.** The upstream project has moved on since then - the fabrication warning that used to sit on the reference design has been resolved and the hardware has been revised - so this design should be read against the PicoTracker of its day rather than the current one. The firmware of that era implemented 16-channel MIDI output and still carried MIDI input on its wishlist, so the MIDI input circuit on this board is ahead of the firmware it was designed to run.
 
 ### Goals
 
@@ -44,7 +44,7 @@ The power tree follows the arrangement documented in the Raspberry Pi Pico datas
 
 ### Planning and design
 
-The schematic was split into the functional blocks the board actually needs: MIDI out, the Raspberry Pi Pico, the SD card on SPI, the charge circuit, the power tree, the switch field, and the amplifier and speaker outputs. Working block by block made it possible to check each rail and each interface against the reference behaviour before the layout was committed.
+The schematic was split into the functional blocks the board actually needs: MIDI in and out, the Raspberry Pi Pico, the SD card on SPI, the charge circuit, the power tree, the switch field, and the amplifier and speaker outputs. Working block by block made it possible to check each rail and each interface against the reference behaviour before the layout was committed.
 
 The layout was driven by the display and the key field, since those fix the outline of the board. The Pico sits centrally with the modules radiating out from it, and the audio section is kept physically separate from the digital side to keep the amplifier switching noise off the DAC and the SD card.
 
@@ -58,8 +58,8 @@ The power tree was laid out against the Raspberry Pi Pico datasheet's own guidan
 |---|---|
 | One carrier board instead of the two-board sandwich | One board means one fab order, one BOM and one assembly job. It does not mean every part lives on it - the DAC, the amplifier, the storage and the display are commercial modules that plug into it. |
 | Solder the switches directly rather than fitting sockets | The space behind the board is too shallow for pin sockets, so the thinner board was worth more than being able to swap a switch without a soldering iron. |
-| Keep the modules for SD, DAC and display rather than designing equivalents | They are all well-characterised breakouts. Replacing them would have added risk without adding understanding. |
-| Opto-isolated MIDI out with an H11L1 | MIDI is a long, unbalanced bus that will pick up noise and ground offsets if it is wired directly to the logic ground. The H11L1 has a built-in Schmitt trigger and works at 3.3 V, so it pairs cleanly with a Pico. |
+| Keep the modules for SD, DAC, amplifier and display rather than designing equivalents | They are all well-characterised breakouts. Replacing them would have added risk without adding understanding. |
+| Opto-isolate the MIDI input with an H11L1 | MIDI is a long, unbalanced bus that will pick up noise and ground offsets if it is wired directly to the logic ground, so the input side gets an optocoupler. The H11L1 has a built-in Schmitt trigger and works at 3.3 V, so it pairs cleanly with a Pico, and a 1N4148 across the LED takes the reverse voltage if the polarity is swapped. The output side is driven straight from a GPIO and is not isolated. |
 | BQ24232 charge controller rather than a simple TP4056 | It is a power-path charger, so it manages swapping between the cell and the input source while charging. Its status output is available, but it is not wired back to the microcontroller on this board. |
 | Power path taken from the Raspberry Pi Pico datasheet | The datasheet documents how to run a Pico from a cell, and names the DMG2305UX P-channel MOSFET as the part to use for it. Following a published arrangement beat inventing one. |
 
@@ -74,25 +74,25 @@ The power tree was laid out against the Raspberry Pi Pico datasheet's own guidan
 | ILI9341 SPI display module | Plugs into the 14-pin header on the board | 1 |
 | BQ24232HRGTR | Power-path Li-ion charge controller, VQFN-16 | 1 |
 | DMG2305UX | P-channel MOSFET for the power path, SOT-23 | 1 |
-| H11L1 | Optocoupler for the isolated MIDI output, SMDIP-6 | 1 |
-| PJ-327C-4A | 3.5 mm stereo headphone jacks | 2 |
+| H11L1 | Optocoupler for the isolated MIDI input, SMDIP-6 | 1 |
+| PJ-327C-4A | 3.5 mm stereo headphone jacks, MIDI in and out | 2 |
 | GT-USB-7010ASV | USB-C receptacle | 1 |
 | Kailh Choc V1 | Low-profile key switches, soldered directly | 9 |
-| MS-22D28-G020 | SPDT slide switches | 2 |
+| MS-22D28-G020 | SPDT slide switches - one shuts the amplifier down for mute | 2 |
 | 1N4148WS | Signal diode, SOD-323 | 1 |
 | Ferrite beads | 600 R at 100 MHz, EMI suppression | 4 |
 | Passives | 0603 resistors and capacitors | as listed |
 
 ### Build and testing
 
-The board went from layout files to a fabricated PCB, through microscope inspection and rework, to a populated unit with the display and key field fitted.
+The board went from layout files to a fabricated PCB, through microscope inspection and assembly, to a populated unit with the display and key field fitted. Only one PCB round was needed.
 
 <div align="center">
 
 <table>
 <tr>
 <td width="33%" align="center"><img src="photos/01-pcb-layout.png" width="280" alt="KiCad PCB layout of the tracker board showing the key field, the display header and the audio section"><br><sub>PCB layout</sub></td>
-<td width="33%" align="center"><img src="photos/02-schematic.png" width="280" alt="KiCad schematic divided into MIDI out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
+<td width="33%" align="center"><img src="photos/02-schematic.png" width="280" alt="KiCad schematic divided into MIDI in and out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
 <td width="33%" align="center"><img src="photos/03-board-under-magnifier.jpg" width="280" alt="The board positioned under a stereo microscope on the bench"><br><sub>Under the microscope</sub></td>
 </tr>
 <tr>
@@ -116,12 +116,12 @@ The board went from layout files to a fabricated PCB, through microscope inspect
 - Keeping the amplifier section physically apart from the DAC and SD card kept the switching noise out of the audio path.
 - Following the Raspberry Pi Pico datasheet for the power path meant the battery and the USB input could not back-feed each other, and the arrangement was already worked out and published rather than invented here.
 - The low-profile Choc key field kept the tracker close to the same footprint as the reference design while the whole instrument still came together as one unit.
+- One PCB round was enough. The first board came back from fabrication and worked as expected, so the layout went straight to a populated, working unit with no respin.
 
 **What went wrong**
 
-- The MIDI interface needed extra attention, including the opto-isolator's output stage, and it took a second pass to get right.
+- The MIDI interface needed extra attention, particularly the opto-isolated input stage, and it took a second pass through the schematic to get right.
 - Inspecting the fine-pitch parts by eye was not good enough; the microscope turned out to be essential for verifying joints on the dense side of the board.
-- The board needed rework after fabrication, so the first spin was not a first-pass success.
 - The switches themselves proved less reliable than they should have been. That is a design problem rather than a layout one, so re-spacing the field would not fix it.
 - The charger's status output is not wired back to the microcontroller, so the firmware currently has no way of reporting the charge state.
 
@@ -133,6 +133,7 @@ The board went from layout files to a fabricated PCB, through microscope inspect
 - Add the 3D-printed rear panel so the speaker cavities actually get the box resonance they need.
 - Design a proper enclosure around the display and the key field rather than leaving the PCB exposed.
 - Re-check the MIDI interface against the current PicoTracker hardware, since this board was designed against an older generation of it.
+- Exercise the MIDI input path against a firmware that implements MIDI input - the upstream firmware of that era implemented MIDI output only.
 
 ### Full build gallery
 
@@ -141,7 +142,7 @@ The board went from layout files to a fabricated PCB, through microscope inspect
 <table>
 <tr>
 <td width="33%" align="center"><img src="photos/01-pcb-layout.png" width="280" alt="KiCad PCB layout of the tracker board showing the key field, the display header and the audio section"><br><sub>PCB layout</sub></td>
-<td width="33%" align="center"><img src="photos/02-schematic.png" width="280" alt="KiCad schematic divided into MIDI out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
+<td width="33%" align="center"><img src="photos/02-schematic.png" width="280" alt="KiCad schematic divided into MIDI in and out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
 <td width="33%" align="center"><img src="photos/03-board-under-magnifier.jpg" width="280" alt="The board positioned under a stereo microscope on the bench"><br><sub>Under the microscope</sub></td>
 </tr>
 <tr>
