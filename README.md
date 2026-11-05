@@ -86,19 +86,19 @@ The board went from layout files to a fabricated PCB, through microscope inspect
 
 <table>
 <tr>
-<td width="3100%" align="center"><img src="photos/01-pcb-layout.png" width="93" alt="KiCad PCB layout of the tracker board showing the key field, display header and the audio section"><br><sub>PCB layout</sub></td>
-<td width="3100%" align="center"><img src="photos/02-schematic.png" width="93" alt="KiCad schematic divided into MIDI out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
-<td width="3100%" align="center"><img src="photos/03-board-under-magnifier.jpg" width="93" alt="The board positioned under a stereo microscope on the bench"><br><sub>Under the microscope</sub></td>
+<td width="33%" align="center"><img src="photos/01-pcb-layout.png" width="280" alt="KiCad PCB layout of the tracker board showing the key field, display header and the audio section"><br><sub>PCB layout</sub></td>
+<td width="33%" align="center"><img src="photos/02-schematic.png" width="280" alt="KiCad schematic divided into MIDI out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
+<td width="33%" align="center"><img src="photos/03-board-under-magnifier.jpg" width="280" alt="The board positioned under a stereo microscope on the bench"><br><sub>Under the microscope</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/04-microscope-inspection.jpg" width="93" alt="The board under the microscope with tweezers positioned over the fine-pitch parts"><br><sub>Microscope inspection</sub></td>
-<td width="3100%" align="center"><img src="photos/05-board-edge-headers.jpg" width="93" alt="Edge-on view of the board showing the three-pin headers along the sides"><br><sub>Board edge and headers</sub></td>
-<td width="3100%" align="center"><img src="photos/06-key-field-hot-swap-sockets.jpg" width="93" alt="Underside of the board showing the nine Kailh Choc hot-swap sockets and the two speaker grilles"><br><sub>Key field, hot-swap sockets</sub></td>
+<td width="33%" align="center"><img src="photos/04-microscope-inspection.jpg" width="280" alt="The board under the microscope with tweezers positioned over the fine-pitch parts"><br><sub>Microscope inspection</sub></td>
+<td width="33%" align="center"><img src="photos/05-board-edge-headers.jpg" width="280" alt="Edge-on view of the board showing the three-pin headers along the sides"><br><sub>Board edge and headers</sub></td>
+<td width="33%" align="center"><img src="photos/06-key-field-hot-swap-sockets.jpg" width="280" alt="Underside of the board showing the nine Kailh Choc hot-swap sockets and the two speaker grilles"><br><sub>Key field, hot-swap sockets</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/07-component-side.jpg" width="93" alt="The component side of the board held up"><br><sub>Component side</sub></td>
-<td width="3100%" align="center"><img src="photos/08-hot-swap-socket-detail.jpg" width="93" alt="Close-up of a single hot-swap socket with a Choc switch seated in it"><br><sub>Hot-swap socket detail</sub></td>
-<td width="3100%" align="center"><img src="photos/09-board-with-display-fitted.jpg" width="93" alt="The board with the display fitted at the top and the key field populated"><br><sub>Display and key field fitted</sub></td>
+<td width="33%" align="center"><img src="photos/07-component-side.jpg" width="280" alt="The component side of the board held up"><br><sub>Component side</sub></td>
+<td width="33%" align="center"><img src="photos/08-hot-swap-socket-detail.jpg" width="280" alt="Close-up of a single hot-swap socket with a Choc switch seated in it"><br><sub>Hot-swap socket detail</sub></td>
+<td width="33%" align="center"><img src="photos/09-board-with-display-fitted.jpg" width="280" alt="The board with the display fitted at the top and the key field populated"><br><sub>Display and key field fitted</sub></td>
 </tr>
 </table>
 </div>
@@ -135,33 +135,33 @@ The board went from layout files to a fabricated PCB, through microscope inspect
 
 <table>
 <tr>
-<td width="3100%" align="center"><img src="photos/01-pcb-layout.png" width="93" alt="KiCad PCB layout of the tracker board showing the key field, display header and the audio section"><br><sub>PCB layout</sub></td>
-<td width="3100%" align="center"><img src="photos/02-schematic.png" width="93" alt="KiCad schematic divided into MIDI out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
-<td width="3100%" align="center"><img src="photos/03-board-under-magnifier.jpg" width="93" alt="The board positioned under a stereo microscope on the bench"><br><sub>Under the microscope</sub></td>
+<td width="33%" align="center"><img src="photos/01-pcb-layout.png" width="280" alt="KiCad PCB layout of the tracker board showing the key field, display header and the audio section"><br><sub>PCB layout</sub></td>
+<td width="33%" align="center"><img src="photos/02-schematic.png" width="280" alt="KiCad schematic divided into MIDI out, Raspberry Pi Pico, SD card on SPI, charge circuit, power, switches and amplifier blocks"><br><sub>Schematic</sub></td>
+<td width="33%" align="center"><img src="photos/03-board-under-magnifier.jpg" width="280" alt="The board positioned under a stereo microscope on the bench"><br><sub>Under the microscope</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/04-microscope-inspection.jpg" width="93" alt="The board under the microscope with tweezers positioned over the fine-pitch parts"><br><sub>Microscope inspection</sub></td>
-<td width="3100%" align="center"><img src="photos/05-board-edge-headers.jpg" width="93" alt="Edge-on view of the board showing the three-pin headers along the sides"><br><sub>Board edge and headers</sub></td>
-<td width="3100%" align="center"><img src="photos/06-key-field-hot-swap-sockets.jpg" width="93" alt="Underside of the board showing the nine Kailh Choc hot-swap sockets and the two speaker grilles"><br><sub>Key field, hot-swap sockets</sub></td>
+<td width="33%" align="center"><img src="photos/04-microscope-inspection.jpg" width="280" alt="The board under the microscope with tweezers positioned over the fine-pitch parts"><br><sub>Microscope inspection</sub></td>
+<td width="33%" align="center"><img src="photos/05-board-edge-headers.jpg" width="280" alt="Edge-on view of the board showing the three-pin headers along the sides"><br><sub>Board edge and headers</sub></td>
+<td width="33%" align="center"><img src="photos/06-key-field-hot-swap-sockets.jpg" width="280" alt="Underside of the board showing the nine Kailh Choc hot-swap sockets and the two speaker grilles"><br><sub>Key field, hot-swap sockets</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/07-component-side.jpg" width="93" alt="The component side of the board held up"><br><sub>Component side</sub></td>
-<td width="3100%" align="center"><img src="photos/08-hot-swap-socket-detail.jpg" width="93" alt="Close-up of a single hot-swap socket with a Choc switch seated in it"><br><sub>Hot-swap socket detail</sub></td>
-<td width="3100%" align="center"><img src="photos/09-board-with-display-fitted.jpg" width="93" alt="The board with the display fitted at the top and the key field populated"><br><sub>Display and key field fitted</sub></td>
+<td width="33%" align="center"><img src="photos/07-component-side.jpg" width="280" alt="The component side of the board held up"><br><sub>Component side</sub></td>
+<td width="33%" align="center"><img src="photos/08-hot-swap-socket-detail.jpg" width="280" alt="Close-up of a single hot-swap socket with a Choc switch seated in it"><br><sub>Hot-swap socket detail</sub></td>
+<td width="33%" align="center"><img src="photos/09-board-with-display-fitted.jpg" width="280" alt="The board with the display fitted at the top and the key field populated"><br><sub>Display and key field fitted</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/10-modules-and-speakers.jpg" width="93" alt="The board with the Pico, the SD card breakout, the MIDI interface and both micro speakers mounted"><br><sub>Modules and speakers</sub></td>
-<td width="3100%" align="center"><img src="photos/11-display-and-keys.jpg" width="93" alt="The board with the ILI9341 display module mounted and the switches in place"><br><sub>Display and keys</sub></td>
-<td width="3100%" align="center"><img src="photos/13-status-leds-lit.jpg" width="93" alt="Component side with the status LEDs lit in red, green and orange"><br><sub>Status LEDs lit</sub></td>
+<td width="33%" align="center"><img src="photos/10-modules-and-speakers.jpg" width="280" alt="The board with the Pico, the SD card breakout, the MIDI interface and both micro speakers mounted"><br><sub>Modules and speakers</sub></td>
+<td width="33%" align="center"><img src="photos/11-display-and-keys.jpg" width="280" alt="The board with the ILI9341 display module mounted and the switches in place"><br><sub>Display and keys</sub></td>
+<td width="33%" align="center"><img src="photos/13-status-leds-lit.jpg" width="280" alt="Component side with the status LEDs lit in red, green and orange"><br><sub>Status LEDs lit</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/14-led-through-board.jpg" width="93" alt="Back of the board with the RGB status LEDs glowing through their holes"><br><sub>Status LEDs through the board</sub></td>
-<td width="3100%" align="center"><img src="photos/15-board-fully-populated.jpg" width="93" alt="The fully populated board held up, showing the Pico, the SD card breakout, the MIDI interface and the two speakers"><br><sub>Fully populated board</sub></td>
-<td width="3100%" align="center"><img src="photos/16-underside-silkscreen.jpg" width="93" alt="Underside of the board showing the silkscreen labels for the speakers, the power section and the Pico footprint"><br><sub>Underside silkscreen</sub></td>
+<td width="33%" align="center"><img src="photos/14-led-through-board.jpg" width="280" alt="Back of the board with the RGB status LEDs glowing through their holes"><br><sub>Status LEDs through the board</sub></td>
+<td width="33%" align="center"><img src="photos/15-board-fully-populated.jpg" width="280" alt="The fully populated board held up, showing the Pico, the SD card breakout, the MIDI interface and the two speakers"><br><sub>Fully populated board</sub></td>
+<td width="33%" align="center"><img src="photos/16-underside-silkscreen.jpg" width="280" alt="Underside of the board showing the silkscreen labels for the speakers, the power section and the Pico footprint"><br><sub>Underside silkscreen</sub></td>
 </tr>
 <tr>
-<td width="3100%" align="center"><img src="photos/17-underside-full-board.jpg" width="93" alt="Full underside view of the finished board"><br><sub>Underside, full board</sub></td>
-<td width="3100%" align="center"><img src="photos/18-final-unit.jpg" width="93" alt="The finished tracker with the display lit and the keycaps fitted"><br><sub>The finished unit</sub></td>
+<td width="33%" align="center"><img src="photos/17-underside-full-board.jpg" width="280" alt="Full underside view of the finished board"><br><sub>Underside, full board</sub></td>
+<td width="33%" align="center"><img src="photos/18-final-unit.jpg" width="280" alt="The finished tracker with the display lit and the keycaps fitted"><br><sub>The finished unit</sub></td>
 </tr>
 </table>
 </div>
