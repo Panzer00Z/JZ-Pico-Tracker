@@ -6,7 +6,7 @@
 
 <p><img src="https://img.shields.io/badge/Complete%20-%20board%20fabricated,%20populated%20and%20tested-1a7f37" alt="Complete - board fabricated, populated and tested" height="20"></p>
 
-<p><img src="https://img.shields.io/badge/KiCad-8250df" alt="KiCad" height="20"> <img src="https://img.shields.io/badge/Raspberry%20Pi%20Pico-8250df" alt="Raspberry Pi Pico" height="20"> <img src="https://img.shields.io/badge/PCB%20Design-8250df" alt="PCB Design" height="20"> <img src="https://img.shields.io/badge/MIDI-8250df" alt="MIDI" height="20"> <img src="https://img.shields.io/badge/Audio-8250df" alt="Audio" height="20"></p>
+<p><img src="https://img.shields.io/badge/KiCad-8250df" alt="KiCad" height="20"> <img src="https://img.shields.io/badge/Fusion%20360-8250df" alt="Fusion 360" height="20"> <img src="https://img.shields.io/badge/Raspberry%20Pi%20Pico-8250df" alt="Raspberry Pi Pico" height="20"> <img src="https://img.shields.io/badge/PCB%20Design-8250df" alt="PCB Design" height="20"> <img src="https://img.shields.io/badge/MIDI-8250df" alt="MIDI" height="20"> <img src="https://img.shields.io/badge/Audio-8250df" alt="Audio" height="20"> <img src="https://img.shields.io/badge/Firmware-8250df" alt="Firmware" height="20"></p>
 
 <img src="photos/08-assembled-tracker.jpg" width="880" alt="The assembled tracker showing the display, the keycaps and the two speaker grilles">
 
@@ -22,7 +22,7 @@
 | **Started** | June 2023 |
 | **Status** | Complete - board fabricated, populated and tested |
 | **Core hardware** | Raspberry Pi Pico, PCM5102 DAC, MAX98306 amplifier, SD card, ILI9341 display, MIDI in and out, Li-ion charging |
-| **Design tools** | KiCad, reflow and hand soldering, microscope-assisted inspection, 3D printing |
+| **Design tools** | KiCad 8, Fusion 360, CMake and the Pico SDK, reflow and hand soldering, microscope inspection, 3D printing |
 | **Scope** | Full schematic capture, PCB layout, BOM, fabrication, assembly and bring-up |
 
 ## Overview
@@ -82,6 +82,23 @@ The power tree was laid out against the Raspberry Pi Pico datasheet's own guidan
 | 1N4148WS | Signal diode, SOD-323 | 1 |
 | Ferrite beads | 600 R at 100 MHz, EMI suppression | 4 |
 | Passives | 0603 resistors and capacitors | as listed |
+
+### Software and tools
+
+The board went from a blank project to a populated, working unit in one PCB round, and the whole route - schematic, layout, 3D models, fabrication data and assembly - is held in one toolchain.
+
+| Tool | Category | What it was used for |
+|---|---|---|
+| KiCad 8 - Eeschema | EDA | Schematic capture. The board is split into the functional blocks it actually needs - MIDI in and out, the Pico, SPI storage, the charge circuit, the power tree, the switch field and the amplifier - with the netlist, the design rules and the layout kept together in one project file. |
+| KiCad 8 - Pcbnew | EDA | PCB layout: stack-up, net classes, and a 51-footprint placement driven by the size of the display and the key field, with the board outline drawn to the dimensions the enclosure needs. |
+| Fusion 360 | 3D CAD | 3D models for the custom footprints - the 3.5 mm jack and the slide switches - exported as STEP so the board could be checked in KiCad's 3D viewer before it was ordered. |
+| KiCad Fabrication Toolkit | Fabrication | The production package: Gerber and Excellon drill set, drill maps, pick-and-place position file, IPC-D-356 netlist for bare-board electrical test, and the assembly package. |
+| LCSC part numbers in the BOM | Fabrication | Every line of the bill of materials carries a part number, so the SMD parts could be ordered with assembly instead of being placed by hand. |
+| Gerber order packages | Fabrication | Order packages prepared for PCBWay, JLCPCB, Elecrow and FusionPCB, with the main board and the back panel panelised onto one board to share the setup. |
+| CMake and the Raspberry Pi Pico SDK | Firmware | Cross-compiling the RP2040 firmware the board runs, built on the upstream picoTracker project and loaded onto the Pico over USB. |
+| Soldering station, hot air and reflow | Assembly | Hand assembly of the through-hole modules and the fine-pitch parts, including the QFN charger and the SMDIP optocoupler. |
+| Stereo microscope | Test and measurement | Checking joints on the dense side of the board. By eye the fine-pitch joints could not be confirmed, and the microscope turned out to be essential rather than convenient. |
+| 3D printing | Fabrication | The printed panel that carries the display and the key field. |
 
 ### Build and testing
 
