@@ -4,9 +4,9 @@
 
 **A custom schematic and PCB that puts an entire handheld music tracker onto one board.**
 
-<p>![Complete%20-%20board%20fabricated,%20populated%20and%20tested](https://img.shields.io/badge/Complete%20-%20board%20fabricated,%20populated%20and%20tested-1a7f37) &nbsp; ![Big%20Project](https://img.shields.io/badge/Big%20Project-8250df)</p>
+<p><img src="https://img.shields.io/badge/Complete%20-%20board%20fabricated,%20populated%20and%20tested-1a7f37" alt="Complete - board fabricated, populated and tested" height="20"> &nbsp; <img src="https://img.shields.io/badge/Big%20Project-8250df" alt="Big Project" height="20"></p>
 
-<p>![KiCad](https://img.shields.io/badge/KiCad-8250df) ![Raspberry%20Pi%20Pico](https://img.shields.io/badge/Raspberry%20Pi%20Pico-8250df) ![PCB%20Design](https://img.shields.io/badge/PCB%20Design-8250df) ![MIDI](https://img.shields.io/badge/MIDI-8250df) ![Audio](https://img.shields.io/badge/Audio-8250df)</p>
+<p><img src="https://img.shields.io/badge/KiCad-8250df" alt="KiCad" height="20"> <img src="https://img.shields.io/badge/Raspberry%20Pi%20Pico-8250df" alt="Raspberry Pi Pico" height="20"> <img src="https://img.shields.io/badge/PCB%20Design-8250df" alt="PCB Design" height="20"> <img src="https://img.shields.io/badge/MIDI-8250df" alt="MIDI" height="20"> <img src="https://img.shields.io/badge/Audio-8250df" alt="Audio" height="20"></p>
 
 <img src="photos/12-assembled-tracker.jpg" width="880" alt="The assembled tracker showing the display, the seven visible keycaps and the two speaker grilles">
 
