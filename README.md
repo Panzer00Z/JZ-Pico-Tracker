@@ -1,6 +1,6 @@
 <div align="center">
 
-# Custom Pico-Tracker
+# JZ Pico Tracker
 
 **A custom schematic and PCB that puts an entire handheld music tracker onto one board.**
 
