@@ -18,7 +18,7 @@ gerber_to_order/
 production/netlist*
 production/backups/
 
-# --- Eagle / Altium ---
+# --- Autodesk EAGLE ---
 *.brd
 *.s#*
 *.b#*
